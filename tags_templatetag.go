@@ -7,8 +7,8 @@ type tagTemplateTagNode struct {
 var templateTagMapping = map[string]string{
 	"openblock":     "{%",
 	"closeblock":    "%}",
-	"openvariable":  "{{",
-	"closevariable": "}}",
+	"openvariable":  "{[",
+	"closevariable": "]}",
 	"openbrace":     "{",
 	"closebrace":    "}",
 	"opencomment":   "{#",

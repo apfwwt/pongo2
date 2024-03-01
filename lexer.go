@@ -33,7 +33,7 @@ var (
 		"{{-", "-}}", "{%-", "-%}",
 
 		// 2-Char symbols
-		"==", ">=", "<=", "&&", "||", "{{", "}}", "{%", "%}", "!=", "<>",
+		"==", ">=", "<=", "&&", "||", "{[", "]}", "{%", "%}", "!=", "<>",
 
 		// 1-Char symbol
 		"(", ")", "+", "-", "*", "<", ">", "/", "^", ",", ".", "!", "|", ":", "=", "%", "[", "]",
@@ -287,7 +287,7 @@ func (l *lexer) run() {
 				continue // next token
 			}
 
-			if strings.HasPrefix(l.input[l.pos:], "{{") || // variable
+			if strings.HasPrefix(l.input[l.pos:], "{[") || // variable
 				strings.HasPrefix(l.input[l.pos:], "{%") { // tag
 				if l.pos > l.start {
 					l.emit(TokenHTML)
@@ -350,7 +350,7 @@ outer_loop:
 				l.col += l.length()
 				l.emit(TokenSymbol)
 
-				if sym == "%}" || sym == "-%}" || sym == "}}" || sym == "-}}" {
+				if sym == "%}" || sym == "-%}" || sym == "]}" || sym == "-}}" {
 					// Tag/variable end, return after emit
 					return nil
 				}
