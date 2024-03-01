@@ -1,3 +1,3 @@
-module github.com/flosch/pongo2/v6
+module github.com/apfwwt/pongo2
 
 go 1.18
